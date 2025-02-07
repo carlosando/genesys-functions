@@ -1,5 +1,5 @@
 exports.handler = async (event, context, callback) => {
-    console.log("## Context: " + JSON.stringify(context));
+    console.log("## Context is : " + JSON.stringify(context));
     console.log("## Event is: " + JSON.stringify(event));
 
     try {
