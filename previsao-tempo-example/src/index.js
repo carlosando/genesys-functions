@@ -1,5 +1,3 @@
-import fetch from "node-fetch";
-
 /**
  * Genesys Cloud Function Handler
  * @param event - Input values
@@ -8,9 +6,11 @@ import fetch from "node-fetch";
  */
 exports.handler = async (event, context, callback) => {
     try {
+        const fetch = (await import("node-fetch")).default;
+
         const { cep } = event;
         if (!cep) {
-            throw new Error("### Error: CEP é obrigatório");
+            throw new Error("CEP é obrigatório");
         }
 
         // Buscar endereço pelo ViaCEP

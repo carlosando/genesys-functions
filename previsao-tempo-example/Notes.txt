@@ -1,0 +1,34 @@
+1. Runtime & Configuration
+Use Node.js 18.x or 20.x (supported by Genesys Cloud).
+Ensure the handler follows AWS Lambda’s expected format:
+javascript
+Copy
+Edit
+exports.handler = async (event, context, callback) => { ... };
+Set appropriate memory limits (1536MB max) and execution time (60s max).
+2. Code Structure & Imports
+Use CommonJS (require) or enable ES Modules in package.json ("type": "module").
+If using node-fetch v3, apply dynamic import:
+javascript
+Copy
+Edit
+const fetch = (await import("node-fetch")).default;
+3. External Dependencies
+Ensure all required npm packages are installed:
+sh
+Copy
+Edit
+npm install --save node-fetch
+Include node_modules/ in the deployment ZIP file.
+4. Handling Inputs & Outputs
+Accept structured JSON inputs (e.g., receiving a CEP for lookup).
+Return well-structured JSON responses, including error messages if necessary.
+5. API Calls & Error Handling
+Use async/await for HTTP requests and validate responses before using them.
+Implement error handling to catch and log API failures.
+6. Logging & Debugging
+Use console.log() for successful executions and console.error() for failures.
+Check AWS CloudWatch logs for debugging issues.
+7. Deployment & Testing
+Package the Lambda function correctly as a ZIP file.
+Test execution via Genesys Cloud Function Data Actions before publishing.
