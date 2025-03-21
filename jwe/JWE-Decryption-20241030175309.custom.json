@@ -1,0 +1,43 @@
+{
+  "name": "JWE Decryption - Exported 2024-10-30 @ 17:53",
+  "integrationType": "function-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "85036a6b-88e8-48a7-9772-859e94840611",
+      "requestType": "POST",
+      "headers": {},
+      "requestTemplate": "{\n  \"PRIVATE_KEY\": \"$!{credentials.PRIVATE_KEY}\",\n  \"cypherText\": \"$!{input.cypherText}\"\n}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "cypherText": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "type": "object",
+        "properties": {
+          "plainText": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": true
+}

@@ -1,0 +1,43 @@
+{
+  "name": "JWE Encryption - Exported 2024-10-30 @ 17:53",
+  "integrationType": "function-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "903dcd69-68fe-4038-855e-5598383a85d8",
+      "requestType": "POST",
+      "headers": {},
+      "requestTemplate": "{\n  \"PUBLIC_KEY\": \"$!{credentials.PUBLIC_KEY}\",\n  \"plainText\": \"$!{input.plainText}\"\n}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "${rawResult}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "plainText": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "type": "object",
+        "properties": {
+          "cypherText": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": true
+}
