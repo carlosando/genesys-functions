@@ -3,6 +3,7 @@ const https = require('https');
 /**
  * Handler compatível com Genesys Cloud Function
  * Recebe a URI da imagem e envia a imagem codificada em base64 para o Google Gemini Vision API.
+ * parametros: image_uri, GEMINI_API_KEY, content_text, mime_type
  */
 exports.handler = async (event, context, callback) => {
   console.log('## Context:', JSON.stringify(context));
@@ -26,8 +27,16 @@ exports.handler = async (event, context, callback) => {
     return;
   }
 
+
+  const mime_type = event.mime_type;
+  if (!mime_type) {
+    callback(new Error('Variável mime_type não está definida.'));
+    return;
+  }
+
   try {
     const base64Image = await fetchImageAsBase64(imageUri);
+
 
     const requestBody = JSON.stringify({
       contents: [
@@ -36,7 +45,7 @@ exports.handler = async (event, context, callback) => {
             { text: content_text },
             {
               inline_data: {
-                mime_type: "image/jpeg", // ou image/png, se necessário
+                mime_type: mime_type, // ou image/png, se necessário
                 data: base64Image
               }
             }
