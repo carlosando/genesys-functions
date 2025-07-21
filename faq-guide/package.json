@@ -1,0 +1,25 @@
+{
+  "name": "kb-search-answer-highlight",
+  "version": "1.0.0",
+  "description": "GC KB search",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "genesys",
+    "cloud",
+    "function",
+    "knowledge-base",
+    "search",
+    "answer-highlight"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
